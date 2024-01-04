@@ -1,5 +1,6 @@
 import MusicalCard from "../MusicalCard";
 import MusicalRow from "../MusicalRow";
+import React from "react";
 
 const MusicalGrid = ({ musicals, toggleView }) => {
   return toggleView ? (

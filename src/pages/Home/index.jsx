@@ -3,6 +3,7 @@ import React from "react";
 import heroImage from "../../assets/hero.jpg";
 import MusicalCard from "../../components/MusicalCard";
 import phantomImage from "../../assets/phantom_of_the_opera.jpg";
+import { useNavigate } from "react-router-dom";
 
 const musicalsData = [
   { title: "Cats", author: "Andrew Lloyd Webber", image: "cats.jpg" },
@@ -36,6 +37,11 @@ const containerStyle = {
 };
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const navigateToSignup = () => {
+    navigate("/signup");
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen h-full w-screen bg-zinc-900 text-white">
       <div
@@ -46,21 +52,22 @@ const HomePage = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Track musicals you've watched.
           </h1>
-          <button className="bg-yellow-500 text-zinc-900 px-6 py-2 rounded-full">
+          <button
+            className="bg-yellow-500 text-zinc-900 px-6 py-2 rounded-full"
+            onClick={navigateToSignup}
+          >
             Join Us Now!
           </button>
         </div>
       </div>
 
-      <div className="my-8">
-        <div className="flex flex-wrap justify-center">
-          {musicalsData.map((musical, index) => (
-            <MusicalCard key={index} musical={musical} index={index} />
-          ))}
-        </div>
+      <div className="grid grid-cols-8 gap-4 mb-20">
+        {musicalsData.map((musical, index) => (
+          <MusicalCard key={index} musical={musical} index={index} />
+        ))}
       </div>
 
-      <footer className="text-center py-4 w-full text-gray-500 bg-gray-900">
+      <footer className="text-center py-4 mt-20 w-full text-gray-500 bg-gray-900">
         Designed by Dagmara. 2024
       </footer>
     </div>
